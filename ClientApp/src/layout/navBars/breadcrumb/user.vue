@@ -20,6 +20,7 @@
 				<el-dropdown-menu>
 					<el-dropdown-item command="zh-cn" :disabled="disabledI18n === 'zh-cn'">简体中文</el-dropdown-item>
 					<el-dropdown-item command="en" :disabled="disabledI18n === 'en'">English</el-dropdown-item>
+          <el-dropdown-item command="ru" :disabled="disabledI18n === 'ru'">Русский</el-dropdown-item>
 					<el-dropdown-item command="zh-tw" :disabled="disabledI18n === 'zh-tw'">繁體中文</el-dropdown-item>
 				</el-dropdown-menu>
 			</template>
@@ -104,7 +105,7 @@ export default defineComponent({
 		const searchRef = ref();
 		const state = reactive({
 			isScreenfull: false,
-			disabledI18n: 'zh-cn',
+			disabledI18n: 'ru',
 			disabledSize: 'large',
 		});
 		// 设置分割样式
@@ -212,6 +213,10 @@ export default defineComponent({
 					state.disabledI18n = 'en';
 					setI18nConfig('en');
 					break;
+        case 'ru':
+          state.disabledI18n = 'ru';
+          setI18nConfig('ru');
+          break;
 				case 'zh-tw':
 					state.disabledI18n = 'zh-tw';
 					setI18nConfig('zh-tw');

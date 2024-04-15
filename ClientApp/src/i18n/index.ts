@@ -4,14 +4,18 @@ import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import zhcnLocale from "element-plus/dist/locale/zh-cn.mjs";
 import enLocale from "element-plus/dist/locale/en.mjs";
+import ruLocale from "element-plus/dist/locale/ru.mjs";
 import nextZhcn from '/@/i18n/lang/zh-cn';
 import nextEn from '/@/i18n/lang/en';
+import nextRu from '/@/i18n/lang/ru';
 import nextZhtw from '/@/i18n/lang/zh-tw';
 import pagesLoginZhcn from '/@/i18n/pages/login/zh-cn';
 import pagesLoginEn from '/@/i18n/pages/login/en';
+import pagesLoginRu from '/@/i18n/pages/login/ru';
 import pagesLoginZhtw from '/@/i18n/pages/login/zh-tw';
 import pagesFormI18nZhcn from '/@/i18n/pages/formI18n/zh-cn';
 import pagesFormI18nEn from '/@/i18n/pages/formI18n/en';
+import pagesFormI18nRu from '/@/i18n/pages/formI18n/ru';
 import pagesFormI18nZhtw from '/@/i18n/pages/formI18n/zh-tw';
 
 // 定义语言国际化内容
@@ -37,6 +41,14 @@ const messages = {
 			...pagesFormI18nEn,
 		},
 	},
+	[ruLocale.name]: {
+		...ruLocale,
+		message: {
+			...nextRu,
+			...pagesLoginRu,
+			...pagesFormI18nRu,
+		},
+	},
 };
 
 // 读取 pinia 默认语言
@@ -52,6 +64,6 @@ export const i18n = createI18n({
 	silentFallbackWarn: true,
 	fallbackWarn: false,
 	locale: themeConfig.value.globalI18n,
-	fallbackLocale: zhcnLocale.name,
+	fallbackLocale: ruLocale.name,
 	messages,
 });

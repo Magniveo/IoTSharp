@@ -3,6 +3,7 @@ import _ from 'lodash-es';
 import { TableDataRow } from '../model/tenantListModel';
 import { ElMessage } from 'element-plus';
 import { useRouter } from 'vue-router';
+import {getTagViewNameI18n} from "/@/utils/other";
 export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 	const router = useRouter();
 	let records: any[] = [];
@@ -88,8 +89,8 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 						show: false,
 					},
 					device: {
-						text: '设备管理',
-						title: '设备管理',
+						text: getTagViewNameI18n('devicemnt'),
+						title: getTagViewNameI18n('devicemnt'),
 						icon: 'Cpu',
 						order: 1,
 						type: 'default',
@@ -104,8 +105,8 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 						},
 					},
 					custom: {
-						text: '用户管理',
-						title: '用户管理',
+						text: getTagViewNameI18n('usermnt'),
+						title: getTagViewNameI18n('usermnt'),
 						icon: 'User',
 						order: 1,
 						type: 'info',
@@ -133,7 +134,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 			},
 			columns: {
 				name: {
-					title: '名称',
+					title: getTagViewNameI18n('keyName'),
 					type: 'text',
 					column: { width: 200 },
 					search: { show: true },
@@ -147,7 +148,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				email: {
-					title: '邮件',
+					title: getTagViewNameI18n('mail'),
 					type: 'text',
 					column: { width: 180 },
 					addForm: {
@@ -160,7 +161,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				phone: {
-					title: '电话',
+					title: getTagViewNameI18n('phone'),
 					column: { width: 150 },
 					type: 'text',
 					addForm: {
@@ -173,7 +174,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				country: {
-					title: '国家',
+					title: getTagViewNameI18n('country'),
 					column: { width: 80 },
 					type: 'text',
 					addForm: {
@@ -186,7 +187,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				province: {
-					title: '省',
+					title: getTagViewNameI18n('province'),
 					type: 'text',
 					column: { width: 80 },
 					addForm: {
@@ -199,7 +200,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				city: {
-					title: '市',
+					title: getTagViewNameI18n('city'),
 					type: 'text',
 					column: { width: 100 },
 					addForm: {
@@ -212,7 +213,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				street: {
-					title: '街道',
+					title: getTagViewNameI18n('street'),
 					column: { width: 180 },
 					type: 'text',
 					addForm: {
@@ -225,7 +226,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				address: {
-					title: '地址',
+					title: getTagViewNameI18n('address'),
 					column: { width: 180 },
 					type: 'text',
 					addForm: {
@@ -238,7 +239,7 @@ export const createCustomerListCrudOptions = function ({ expose }, tenantId) {
 					},
 				},
 				zipCode: {
-					title: '邮编',
+					title: getTagViewNameI18n('zipCode'),
 					column: { width: 150 },
 					type: 'text',
 					addForm: {

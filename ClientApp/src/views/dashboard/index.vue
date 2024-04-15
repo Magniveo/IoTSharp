@@ -7,12 +7,12 @@
 		<!--   图表 + 健康 -->
 		<el-row :gutter="15" class="mb15">
 			<el-col :span="12">
-				<card title="设备在线率" :icon="checkNetwork" style="height: 400px">
+				<card :title="getTagViewNameI18n('equipmentOnlineRate')" :icon="checkNetwork" style="height: 400px">
 					<div style="height: 100%" ref="onlineChartRef"></div>
 				</card>
 			</el-col>
 			<el-col :span="12">
-				<card title="设备告警率" :icon="warning" style="height: 400px">
+				<card :title="getTagViewNameI18n('equipmentAlarmRate')" :icon="warning" style="height: 400px">
 					<div style="height: 100%" ref="warningChartRef"></div>
 				</card>
 			</el-col>
@@ -20,12 +20,12 @@
 		<!--  消息 -->
 		<el-row :gutter="15" class="mb15">
 			<el-col :span="16">
-				<card title="消息总线" :icon="iconChart" style="height: 400px">
+				<card :title="getTagViewNameI18n('messageBus')" :icon="iconChart" style="height: 400px">
 					<div style="height: 310px" ref="messageChartRef"></div>
 				</card>
 			</el-col>
 			<el-col :span="8">
-				<card title="健康检查" :icon="monitor">
+				<card :title="getTagViewNameI18n('healthCheck')" :icon="monitor">
 					<div class="pt-10px">
 						<div v-for="(item, index) in healthChecks" class="flex items-center mb-20px text-lg" :key="index">
 							<el-icon class="text-2xl mr-8px">
@@ -62,6 +62,7 @@ import { homeCardItemsConfig } from '/@/views/dashboard/homeCardItems';
 import { nextTick, onActivated, onMounted, ref, watch } from 'vue';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { getHealthChecks, getKanban, getMessageInfo } from '/@/api/dashboard';
+import {getTagViewNameI18n} from "/@/utils/other";
 
 const storesThemeConfig = useThemeConfig();
 const { themeConfig } = storeToRefs(storesThemeConfig);

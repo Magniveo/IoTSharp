@@ -5,17 +5,17 @@
         <el-form :model="dataForm" size="default" label-width="90px">
           <el-row :gutter="35">
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">
-              <el-form-item label="设备名称">
+              <el-form-item :label="getMenuViewNameI18n('deviceName')">
                 <el-input
                   v-model="dataForm.name"
-                  placeholder="请输入设备名称"
+                  :placeholder="getMenuViewNameI18n('deviceName')"
                   clearable
                 ></el-input>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">
-              <el-form-item label="设备类型">
-                <el-select v-model="dataForm.deviceType" placeholder="请选择设备类型">
+              <el-form-item :label="getMenuViewNameI18n('deviceType')">
+                <el-select v-model="dataForm.deviceType" :placeholder="getMenuViewNameI18n('deviceType')">
                   <el-option
                     v-for="item in deviceTypes"
                     :key="item"
@@ -26,17 +26,17 @@
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">
-              <el-form-item label="超时">
+              <el-form-item :label="getMenuViewNameI18n('timeout')">
                 <el-input
                   v-model="dataForm.timeout"
-                  placeholder="请输入超时"
+                  :placeholder="getMenuViewNameI18n('timeout')"
                   clearable
                 ></el-input>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">
-              <el-form-item label="认证方式">
-                <el-select v-model="dataForm.identityType" placeholder="请选择认证方式">
+              <el-form-item :label="getMenuViewNameI18n('authenticationMethod')">
+                <el-select v-model="dataForm.identityType" :placeholder="getMenuViewNameI18n('authenticationMethod')">
                   <el-option
                     v-for="item in identityTypes"
                     :key="item"
@@ -52,8 +52,8 @@
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">
              
               <el-form-item>
-                <el-button type="primary" @click="onSubmit">保存</el-button>
-                <el-button @click="closeDialog">取消</el-button>
+                <el-button type="primary" @click="onSubmit">{{getMenuViewNameI18n('save')}}</el-button>
+                <el-button @click="closeDialog">{{getMenuViewNameI18n('cancel')}}</el-button>
               </el-form-item>
             </el-col>
           </el-row>

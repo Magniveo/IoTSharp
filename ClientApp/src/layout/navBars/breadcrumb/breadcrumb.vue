@@ -11,11 +11,11 @@
 				<el-breadcrumb-item v-for="(v, k) in breadcrumbList" :key="!v.meta.tagsViewName ? v.meta.title : v.meta.tagsViewName">
 					<span v-if="k === breadcrumbList.length - 1" class="layout-navbars-breadcrumb-span">
 						<SvgIcon :name="v.meta.icon" class="layout-navbars-breadcrumb-iconfont" v-if="themeConfig.isBreadcrumbIcon" />
-						<div v-if="!v.meta.tagsViewName">{{ $t(v.meta.title) }}</div>
-						<div v-else>{{ v.meta.tagsViewName }}</div>
+						<div v-if="!v.meta.tagsViewName">{{ other.getMenuViewNameI18n(v['name'])  }}</div>
+						<div v-else>{{ other.getMenuViewNameI18n(v['name'])  }}</div>
 					</span>
 					<a v-else @click.prevent="onBreadcrumbClick(v)">
-						<SvgIcon :name="v.meta.icon" class="layout-navbars-breadcrumb-iconfont" v-if="themeConfig.isBreadcrumbIcon" />{{ $t(v.meta.title) }}
+						<SvgIcon :name="v.meta.icon" class="layout-navbars-breadcrumb-iconfont" v-if="themeConfig.isBreadcrumbIcon" />{{ other.getMenuViewNameI18n(v['name']) }}
 					</a>
 				</el-breadcrumb-item>
 			</transition-group>
@@ -42,6 +42,11 @@ interface BreadcrumbState {
 
 export default defineComponent({
 	name: 'layoutBreadcrumb',
+  computed: {
+    other() {
+      return other
+    }
+  },
 	setup() {
 		const stores = useRoutesList();
 		const storesThemeConfig = useThemeConfig();

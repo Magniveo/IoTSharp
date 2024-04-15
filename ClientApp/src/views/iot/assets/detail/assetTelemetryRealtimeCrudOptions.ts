@@ -1,5 +1,6 @@
 import { assetApi } from '/@/api/asset';
 import { formatToDateTime } from '/@/utils/dateUtil';
+import {getTagViewNameI18n} from "/@/utils/other";
 // eslint-disable-next-line no-unused-vars
 export const createDeviceTelemetryRealtimeCrudOptions = function ({ expose }, assetId, state) {
 	let records: any[] = [];
@@ -53,7 +54,7 @@ export const createDeviceTelemetryRealtimeCrudOptions = function ({ expose }, as
 				dropdown: {
 					more: {
 						//更多按钮配置
-						text: '属性',
+						text: getTagViewNameI18n('attribute'),
 						...FsButton,
 						icon: 'operation',
 					},
@@ -66,7 +67,7 @@ export const createDeviceTelemetryRealtimeCrudOptions = function ({ expose }, as
 			},
 			columns: {
 				keyName: {
-					title: '属性名称',
+					title: getTagViewNameI18n('attributeName'),
 					type: 'text',
 					column: {
 						width: 260,
@@ -89,7 +90,7 @@ export const createDeviceTelemetryRealtimeCrudOptions = function ({ expose }, as
 				// 	}),
 				// },
 				dateTime: {
-					title: '时间',
+					title: getTagViewNameI18n('time'),
 					type: 'text',
 					column: {
 						formatter: formatColumnDataTime,
@@ -102,7 +103,7 @@ export const createDeviceTelemetryRealtimeCrudOptions = function ({ expose }, as
 					},
 				},
 				value: {
-					title: '值',
+					title: getTagViewNameI18n('value'),
 					type: 'text',
 					addForm: {
 						show: false,

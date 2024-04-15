@@ -15,7 +15,7 @@
           <el-icon class="z-menu-icon">
             <component :is="menuIconList[val.name]"></component>
           </el-icon>
-          <span>{{ $t(val.meta.title) }} </span>
+          <span>{{ getMenuViewNameI18n(val.name)}} </span>
         </template>
         <SubItem :chil="val.children"/>
       </el-sub-menu>
@@ -26,10 +26,10 @@
             <component :is="menuIconList[val.name]"></component>
           </el-icon>
           <template #title v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)">
-            <span class="z-sub-menu-item">{{ $t(val.meta.title) }} </span>
+            <span class="z-sub-menu-item">{{ getMenuViewNameI18n(val.name) }} </span>
           </template>
           <template #title v-else>
-            <a :href="val.meta.isLink" target="_blank" rel="opener" class="w100">{{ $t(val.meta.title) }} </a>
+            <a :href="val.meta.isLink" target="_blank" rel="opener" class="w100">{{ getMenuViewNameI18n(val.name)  }} </a>
           </template>
         </el-menu-item>
       </template>
@@ -44,9 +44,11 @@ import {storeToRefs} from 'pinia';
 import {useThemeConfig} from '/@/stores/themeConfig';
 import SubItem from '/@/layout/navMenu/subItem.vue';
 import {menuIconList} from "/@/layout/navMenu/menu-icons-config.js";
+import {getMenuViewNameI18n, getTagViewNameI18n} from "/@/utils/other";
 
 export default defineComponent({
   name: 'navMenuVertical',
+  methods: {getMenuViewNameI18n},
   components: {SubItem},
   props: {
     menuList: {

@@ -6,7 +6,7 @@
         <el-icon class="z-menu-icon">
           <component :is="menuIconList[val.name]"></component>
         </el-icon>
-        <span>{{ $t(val.meta.title) }} </span>
+        <span>{{ getMenuViewNameI18n(val.name)  }} </span>
       </template>
       <!--			<sub-item :chil="val.children" />-->
     </el-sub-menu>
@@ -18,12 +18,12 @@
             <component :is="menuIconList[val.name]"></component>
           </el-icon>
           <!--         *  // 在这里修改子菜单-->
-          <span >{{ $t(val.meta.title) }}</span>
+          <span >{{ getMenuViewNameI18n(val.name) }}</span>
         </template>
         <template v-else>
           <a :href="val.meta.isLink" target="_blank" rel="opener" class="w100">
             <SvgIcon :name="val.meta.icon"/>
-            {{ $t(val.meta.title) }}
+            {{ getMenuViewNameI18n(val.name) }}
           </a>
         </template>
       </el-menu-item>
@@ -34,9 +34,11 @@
 <script lang="ts">
 import {computed, defineComponent} from 'vue';
 import {menuIconList} from "/@/layout/navMenu/menu-icons-config.js";
+import {getMenuViewNameI18n} from "/@/utils/other";
 
 export default defineComponent({
   name: 'navMenuSubItem',
+  methods: {getMenuViewNameI18n},
   props: {
     chil: {
       type: Array,

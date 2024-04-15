@@ -1,37 +1,38 @@
 import { dict } from '@fast-crud/fast-crud';
+import {getTagViewNameI18n} from "/@/utils/other";
 
 export const deviceDetailBaseInfoColumns = {
 	name: {
-		title: '设备名称',
+		title: getTagViewNameI18n('deviceName'),
 		type: 'button',
 	},
 	deviceType: {
-		title: '设备类型',
+		title: getTagViewNameI18n('deviceType'),
 		type: 'dict-select',
 		dict: dict({
 			data: [
-				{ value: 'Gateway', label: '网关' },
-				{ value: 'Device', label: '设备', color: 'warning' },
+				{ value: 'Gateway', label: getTagViewNameI18n('Gateway') },
+				{ value: 'Device', label: getTagViewNameI18n('Device'), color: 'warning' },
 			],
 		}),
 	},
 
 	active: {
-		title: '活动状态',
+		title: getTagViewNameI18n('activeStatus'),
 		type: 'dict-switch',
 		dict: dict({
 			data: [
-				{ value: true, label: '活动' },
-				{ value: false, label: '静默', color: 'danger' },
+				{ value: true, label: getTagViewNameI18n('activity') },
+				{ value: false, label: getTagViewNameI18n('silence'), color: 'danger' },
 			],
 		}),
 	},
 	lastActivityDateTime: {
-		title: '最后活动时间',
+		title: getTagViewNameI18n('lastAcivityTime'),
 		type: 'text',
 	},
 	identityType: {
-		title: '认证方式',
+		title:getTagViewNameI18n('authenticationMethod'),
 		type: 'dict-select',
 		dict: dict({
 			data: [
@@ -45,7 +46,7 @@ export const deviceDetailBaseInfoColumns = {
 		type: 'text',
 	},
 	timeout: {
-		title: '超时',
+		title: getTagViewNameI18n('timeOut'),
 		type: 'text',
 	},
 };

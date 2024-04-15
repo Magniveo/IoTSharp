@@ -148,6 +148,7 @@ import { v4 as uuidv4, NIL as NIL_UUID } from "uuid";
 import { Session } from "/@/utils/storage";
 import { getProduceList, deleteProduce } from "/@/api/produce";
 import { appmessage } from "/@/api/iapiresult";
+import {getMenuViewNameI18n} from "/@/utils/other";
 // 定义接口来定义对象的类型
 interface TableDataRow {
   id?: string;
@@ -266,8 +267,8 @@ const navtodevice = (row: TableDataRow) => {
 };
 const deleteprod = async (row: TableDataRow) => {
   ElMessageBox.confirm("确定删除该产品?", "警告", {
-    confirmButtonText: "确定",
-    cancelButtonText: "取消",
+    confirmButtonText: getMenuViewNameI18n("confirm"),
+    cancelButtonText: getMenuViewNameI18n("cancel"),
     type: "warning",
   })
     .then(async () => {

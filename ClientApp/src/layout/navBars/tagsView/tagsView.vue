@@ -139,7 +139,7 @@ export default defineComponent({
 		// 设置 自定义 tagsView 名称、 自定义 tagsView 名称国际化
 		const setTagsViewNameI18n = computed(() => {
 			return (v: any) => {
-				return other.setTagsViewNameI18n(v);
+				return other.getMenuViewNameI18n(v["name"])//other.setTagsViewNameI18n(v);
 			};
 		});
 		// 设置 tagsView 高亮

@@ -65,7 +65,21 @@ export function setTagsViewNameI18n(item:any) {
 	}
 	return tagsViewName;
 }
-
+/**
+ * 
+ * @param tagName
+ * @returns return tag from message
+ */
+export function getTagViewNameI18n(tagName:any) {
+	//console.log(Local.get('themeConfig').globalI18n)
+	//console.log(i18n.global.locale )
+	//console.log(i18n['global']['messages']['value'][i18n['global']['locale']['value']])
+	//console.log(i18n['global']['messages']['value'][Local.get('themeConfig').globalI18n]['message']['iot'])
+	return i18n['global']['messages']['value'][Local.get('themeConfig').globalI18n]['message'][tagName]
+}
+export function getMenuViewNameI18n(tagName:any) {
+	return i18n['global']['messages']['value'][Local.get('themeConfig').globalI18n]['message']['iot'][tagName]
+}
 /**
  * 图片懒加载
  * @param el dom 目标元素
@@ -177,6 +191,15 @@ const other = {
 		useTitle();
 	},
 	setTagsViewNameI18n(route: any) {
+		return setTagsViewNameI18n(route);
+	},
+	getMenuViewNameI18n(route: any) {
+		return getMenuViewNameI18n(route);
+	},
+	getTagViewNameI18n(route: any) {
+		return getTagViewNameI18n(route);
+	},
+	getTagsViewNameI18n(route: any) {
 		return setTagsViewNameI18n(route);
 	},
 	lazyImg: (el: any, arr: any) => {

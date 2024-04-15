@@ -1,21 +1,21 @@
 <template>
   <el-drawer v-model="state.drawer" :title="state.dialogtitle" size="70%">
     <el-form :model="state.dataForm" label-width="120px" class="mt-20px">
-      <el-form-item label="请选择规则">
+      <el-form-item :label="getTagViewNameI18n('pleaseSelectTheRule')">
         <el-select v-model="state.dataForm.rule" placeholder="Select">
           <el-option v-for="item in state.rules" :key="item.value" :label="item.label" :value="item.value"
                      :disabled="item.disabled" />
         </el-select>
       </el-form-item>
-      <el-form-item label="请选择设备">
+      <el-form-item :label="getTagViewNameI18n('pleaseSelectDevice')">
         <el-checkbox-group v-model="state.dataForm.dev">
           <el-checkbox v-for="device in state.devices" :label="device.id" :checked="true">{{ device.name
             }}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">委托</el-button>
-        <el-button @click="closeDialog">取消</el-button>
+        <el-button type="primary" @click="onSubmit">{{getTagViewNameI18n('entrust')}}</el-button>
+        <el-button @click="closeDialog">{{getTagViewNameI18n('cancel')}}</el-button>
       </el-form-item>
     </el-form>
   </el-drawer>
@@ -23,6 +23,7 @@
 
 <script lang="ts" setup>
 import { ruleApi } from "/@/api/flows";
+import {getTagViewNameI18n} from "/@/utils/other";
 interface addruleform {
     drawer: boolean;
     dialogtitle: string;
@@ -39,7 +40,7 @@ interface addruledto {
 
 const state = reactive<addruleform>({
     drawer: false,
-    dialogtitle: "规则委托",
+    dialogtitle: getTagViewNameI18n('ruleDelegate'),
     devices: [
     ],
     rules: [],
@@ -64,11 +65,11 @@ const closeDialog = () => {
 const onSubmit = async () => {
     var result = await ruleApi().bindDevice(state.dataForm);
     if (result["code"] === 10000) {
-        ElMessage.success("委托成功");
+        ElMessage.success(getTagViewNameI18n('successfullCommission'));
         state.drawer = false;
         emit("close", { sender: "deviceform", args: state.dataForm });
     } else {
-        ElMessage.warning("委托失败:" + result["msg"]);
+        ElMessage.warning(getTagViewNameI18n('delegateFailed') + result["msg"]);
         emit("close", state.dataForm);
     }
 }

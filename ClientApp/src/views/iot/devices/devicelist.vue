@@ -5,7 +5,7 @@
         <fs-crud ref="crudRef" v-bind="crudBinding">
           <template #actionbar-right>
             <el-divider direction="vertical"/>
-            <el-button @click="openCustomForm">规则委托</el-button>
+            <el-button @click="openCustomForm">{{getTagViewNameI18n('ruleDelegate')}}</el-button>
           </template>
         </fs-crud>
       </div>
@@ -25,6 +25,7 @@ import { createDeviceCrudOptions } from '/@/views/iot/devices/deviceCrudOptions'
 import { useRoute } from 'vue-router';
 import { useUserInfo } from '/@/stores/userInfo';
 import { storeToRefs } from 'pinia';
+import {getTagViewNameI18n} from "/@/utils/other";
 
 
 const selectedItems = ref([]);

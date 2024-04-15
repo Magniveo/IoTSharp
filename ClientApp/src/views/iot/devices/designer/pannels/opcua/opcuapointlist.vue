@@ -20,7 +20,7 @@
 						<el-form-item style="margin: 0" :prop="`data.${scope.$index}.${item.prop}`" :rules="[
 	{
 		required: item.isRequired,
-		message: '不能为空',
+		message: getTagViewNameI18n('canNotBeEmpty'),
 		trigger: `${item.type}` == 'input' ? 'blur' : 'change',
 	},
 ]">
@@ -29,21 +29,21 @@
 							<el-switch v-if="item.type === 'switch'" v-model="scope.row[item.prop]" />
 
 							<el-select v-if="item.type === 'select' && item.prop == 'dataType'"
-								v-model="scope.row[item.prop]" placeholder="请选择">
+								v-model="scope.row[item.prop]" :placeholder="getTagViewNameI18n('pleaseSelect')">
 								<el-option v-for="sel in state.tableData.datatypes" :key="sel.id" :label="sel.label"
 									:value="sel.value" />
 							</el-select>
 							<el-select v-if="item.type === 'select' && item.prop == 'dataCatalog'"
-								v-model="scope.row[item.prop]" placeholder="请选择">
+								v-model="scope.row[item.prop]" :placeholder="getTagViewNameI18n('pleaseSelect')">
 								<el-option v-for="sel in state.tableData.datacatalogs" :key="sel.id" :label="sel.label"
 									:value="sel.value" />
 							</el-select>
 							<el-date-picker v-else-if="item.type === 'date'" v-model="scope.row[item.prop]" type="date"
-								placeholder="选择日期" style="width: 100%" />
+								:placeholder="" style="width: 100%" />
 							<el-input v-else-if="item.type === 'input'" v-model="scope.row[item.prop]"
-								placeholder="请输入内容" />
+								:placeholder="getTagViewNameI18n('pleaseEnterTheContent')" />
 							<el-input v-else-if="item.type === 'dialog'" v-model="scope.row[item.prop]" readonly
-								placeholder="请输入内容">
+								:placeholder="getTagViewNameI18n('pleaseEnterTheContent')">
 								<template v-slot:suffix>
 									<i class="iconfont icon-shouye_dongtaihui" />
 								</template>
@@ -54,7 +54,7 @@
 
 				<el-table-column>
 					<template #default="scope">
-						<el-button text type="primary" @click.prevent="deleterow(scope.row)">删除
+						<el-button text type="primary" @click.prevent="deleterow(scope.row)">{{ getTagViewNameI18n('delete') }}
 						</el-button>
 					</template></el-table-column>
 			</el-table>
@@ -62,8 +62,8 @@
 		<el-row class="flex mt15">
 			<div class="flex-margin">
 				<!-- <el-button size="default" type="success" @click="onValidate">验证</el-button> -->
-				<el-button size="default" type="primary" @click="onAddRow">新增</el-button>
-				<el-button size="default" type="primary" @click="save">保存</el-button>
+				<el-button size="default" type="primary" @click="onAddRow">{{ getTagViewNameI18n('add') }}</el-button>
+				<el-button size="default" type="primary" @click="save">{{ getTagViewNameI18n('save') }}</el-button>
 			</div>
 		</el-row>
 
@@ -79,6 +79,7 @@ import { ElMessage } from "element-plus";
 import { editProduceDictionary, getProduceDictionary } from "/@/api/produce";
 import { datacatalogs, datatypes, funcodes } from "../../models/constants";
 import { opcuamapping } from "../../models/opcuamapping";
+import {getTagViewNameI18n} from "/@/utils/other";
 interface TableHeader {
 	prop: string;
 	width: string | number;

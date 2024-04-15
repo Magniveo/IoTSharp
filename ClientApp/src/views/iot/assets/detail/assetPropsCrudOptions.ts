@@ -1,5 +1,6 @@
 import { assetApi } from '/@/api/asset';
 import { dict } from '@fast-crud/fast-crud';
+import {getTagViewNameI18n} from "/@/utils/other";
 // eslint-disable-next-line no-unused-vars
 export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 	const FsButton = {
@@ -52,7 +53,7 @@ export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 				dropdown: {
 					more: {
 						//更多按钮配置
-						text: '属性',
+						text: getTagViewNameI18n('attribute'),
 						...FsButton,
 						icon: 'operation',
 					},
@@ -65,14 +66,14 @@ export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 			},
 			columns: {
 				keyName: {
-					title: '属性名称',
+					title: getTagViewNameI18n('keyName'),
 					type: 'text',
 					column: {
 						width: 260,
 					},
 				},
 				dataType: {
-					title: '数据类型',
+					title: getTagViewNameI18n('dataType'),
 					type: 'dict-select',
 					dict: dict({
 						data: [
@@ -88,7 +89,7 @@ export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 					}),
 				},
 				dataSide: {
-					title: '数据侧',
+					title: getTagViewNameI18n('dataSide'),
 					type: 'dict-select',
 					dict: dict({
 						data: [
@@ -107,7 +108,7 @@ export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 					},
 				},
 				dateTime: {
-					title: '时间',
+					title: getTagViewNameI18n('dateTime'),
 					type: 'text',
 					addForm: {
 						show: false,
@@ -117,7 +118,7 @@ export const createAssetPropsCrudOptions = function ({ expose }, assetId) {
 					},
 				},
 				value: {
-					title: '值',
+					title: getTagViewNameI18n('value'),
 					type: 'text',
 					addForm: {
 						show: false,

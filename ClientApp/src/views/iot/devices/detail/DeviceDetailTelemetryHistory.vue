@@ -11,7 +11,7 @@
 <!--          <el-button  type="primary" @click="backToRealtime">-->
 <!--            <el-icon><ArrowLeft /></el-icon>返回实时遥测</el-button>-->
         </el-form-item>
-        <el-form-item prop="datetimeRange" label="时间区间">
+        <el-form-item prop="datetimeRange" :label="getTagViewNameI18n('timeInterval')">
           <div style="width:100px">
             <el-date-picker
                 v-model="queryForm.datetimeRange"
@@ -23,29 +23,29 @@
             />
           </div>
         </el-form-item>
-        <el-form-item prop="every" label="时间间隔">
-          <el-time-picker v-model="queryForm.every" placeholder="时间间隔" value-format="HH:mm:ss"/>
+        <el-form-item prop="every" :label="getTagViewNameI18n('timeInterval')">
+          <el-time-picker v-model="queryForm.every" :placeholder="getTagViewNameI18n('timeInterval')" value-format="HH:mm:ss"/>
         </el-form-item>
-        <el-form-item prop="aggregate" label="取值方式">
+        <el-form-item prop="aggregate" :label="getTagViewNameI18n('valueMethod')">
           <el-radio-group v-model="queryForm.aggregate">
-            <el-radio-button label="None">所有值</el-radio-button>
-            <el-radio-button label="Mean">平均值</el-radio-button>
-            <el-radio-button label="Median">中值</el-radio-button>
-            <el-radio-button label="Last">末值</el-radio-button>
-            <el-radio-button label="First">首值</el-radio-button>
-            <el-radio-button label="Max">最大值</el-radio-button>
-            <el-radio-button label="Min">最小值</el-radio-button>
-            <el-radio-button label="Sum">合计</el-radio-button>
+            <el-radio-button label="None">{{ getTagViewNameI18n('None') }}</el-radio-button>
+            <el-radio-button label="Mean">{{ getTagViewNameI18n('Mean') }}</el-radio-button>
+            <el-radio-button label="Median">{{ getTagViewNameI18n('Median') }}</el-radio-button>
+            <el-radio-button label="Last">{{ getTagViewNameI18n('Last') }}</el-radio-button>
+            <el-radio-button label="First">{{ getTagViewNameI18n('First') }}</el-radio-button>
+            <el-radio-button label="Max">{{ getTagViewNameI18n('Max') }}</el-radio-button>
+            <el-radio-button label="Min">{{ getTagViewNameI18n('Min') }}</el-radio-button>
+            <el-radio-button label="Sum">{{ getTagViewNameI18n('Sum') }}</el-radio-button>
           </el-radio-group>
         </el-form-item>
         <el-form-item class="z-search-button-area">
           <div>
-            <el-button type="primary" @click="search">查询</el-button>
-            <el-button @click="resetForm(formRef)">重置</el-button>
+            <el-button type="primary" @click="search">{{ getTagViewNameI18n('query') }}</el-button>
+            <el-button @click="resetForm(formRef)">{{ getTagViewNameI18n('reset') }}</el-button>
           </div>
           <el-radio-group v-model="dataDisplayStatus" class="ml-12px">
-            <el-radio-button label="chart">图表</el-radio-button>
-            <el-radio-button label="dataTable">数据</el-radio-button>
+            <el-radio-button label="chart">{{ getTagViewNameI18n('chart') }}</el-radio-button>
+            <el-radio-button label="dataTable">{{ getTagViewNameI18n('data') }}</el-radio-button>
           </el-radio-group>
 
         </el-form-item>
@@ -54,10 +54,10 @@
     <!--    表格数据 -->
     <div v-show="dataDisplayStatus === 'dataTable'" class="z-table">
       <el-table :data="tableData" style="width: 100%" size="small" v-loading="loading">
-        <el-table-column prop="keyName" label="名称"></el-table-column>
-        <el-table-column prop="value" label="值"></el-table-column>
-        <el-table-column prop="dataType" label="类型"></el-table-column>
-        <el-table-column prop="dateTime" label="时间" :formatter="formatColumnDataTime"></el-table-column>
+        <el-table-column prop="keyName" :label="getTagViewNameI18n('keyName')"></el-table-column>
+        <el-table-column prop="value" :label="getTagViewNameI18n('value')"></el-table-column>
+        <el-table-column prop="dataType" :label="getTagViewNameI18n('dataType')"></el-table-column>
+        <el-table-column prop="dateTime" :label="getTagViewNameI18n('dateTime')" :formatter="formatColumnDataTime"></el-table-column>
       </el-table>
     </div>
     <div v-show="dataDisplayStatus === 'chart'">
@@ -75,6 +75,7 @@ import * as echarts from "echarts";
 import _ from 'lodash-es';
 import { telemetryHistoryChartOptions } from "/@/views/iot/devices/detail/telemetryHistoryChartOptions";
 import { createDeviceRulesCrudOptions } from "/@/views/iot/devices/detail/deviceRulesCrudOptions";
+import {getTagViewNameI18n} from "/@/utils/other";
 const formatColumnDataTime = (row, column, cellValue, index) => {
   return formatToDateTime(cellValue)
 }
